@@ -25,7 +25,6 @@ const wikipediaDeadOrAliveEn = {
     console.log("checkeando 3");
 
     let extractText = pageSummary.query.pages[Object.keys(pageSummary.query.pages)[0]].extract;
-    console.log(`Extracto de la pag: ${extractText}`);
     if (! extractText) {
       throw new Error('No extract: Page doesn\'t exist, or wrong type of page!');
     }
