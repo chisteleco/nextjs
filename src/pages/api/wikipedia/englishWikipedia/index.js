@@ -25,10 +25,19 @@ const wikipediaDeadOrAliveEn = {
     console.log("checkeando 3");
 
     let extractText = pageSummary.query.pages[Object.keys(pageSummary.query.pages)[0]].extract;
-    if (! extractText) {
-      throw new Error('No extract: Page doesn\'t exist, or wrong type of page!');
-    }
+    console.log(`checkeando: ${extractText}`);
 
+    if ((! extractText)||(typeof extractText==='undefined')) {
+      console.log("checkeando 4.5");
+      return {
+        name: pageName.replace(/_/g, ' '),
+        dead:"Not Found",
+        died:"N/A",
+        description:"Not found"
+      };
+      //throw new Error('No extract: Page doesn\'t exist, or wrong type of page!');
+    }
+    console.log("checkeando 4");
     extractText = extractText.replace(/Jr./g, 'Jr');
     extractText = extractText.replace(/Sr./g, 'Sr');
 
@@ -43,7 +52,7 @@ const wikipediaDeadOrAliveEn = {
     
     let datePart = firstSentence.substring(openBracketPos, closeBracketPos + 1).trim();
     const firstSemicolonPos = datePart.indexOf(';');
-
+    console.log("checkeando 5");
     if (firstSemicolonPos !== -1) {
       datePart = datePart.substring(firstSemicolonPos + 1).trim();
     }
