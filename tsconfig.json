@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/api/wikipedia/spanishWikipedia/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/api/wikipedia/spanishWikipedia/index.js", "src/pages/CheckWikiData/index.js"],
   "exclude": ["node_modules"]
 }
