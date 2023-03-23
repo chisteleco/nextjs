@@ -19,13 +19,13 @@ const wikipediaDeadOrAliveEn = {
       throw new Error(`Wikipedia responded with status code ${response.status}!`);
     }
     
-    console.log("checkeando 2");
+  
 
     const pageSummary = await response.json();
-    console.log("checkeando 3");
+ 
 
     let extractText = pageSummary.query.pages[Object.keys(pageSummary.query.pages)[0]].extract;
-    console.log(`checkeando: ${extractText}`);
+    //console.log(`checkeando: ${extractText}`);
 
     if ((! extractText)||(typeof extractText==='undefined')) {
       console.log("checkeando 4.5");
@@ -37,12 +37,12 @@ const wikipediaDeadOrAliveEn = {
       };
       //throw new Error('No extract: Page doesn\'t exist, or wrong type of page!');
     }
-    console.log("checkeando 4");
+
     extractText = extractText.replace(/Jr./g, 'Jr');
     extractText = extractText.replace(/Sr./g, 'Sr');
-
+    
     const firstSentence = extractText.substring(0, extractText.indexOf('.') + 1);
-
+    
     const openBracketPos = firstSentence.indexOf('(');
     const closeBracketPos = firstSentence.lastIndexOf(')');
 
@@ -52,25 +52,31 @@ const wikipediaDeadOrAliveEn = {
     
     let datePart = firstSentence.substring(openBracketPos, closeBracketPos + 1).trim();
     const firstSemicolonPos = datePart.indexOf(';');
-    console.log("checkeando 5");
+    
     if (firstSemicolonPos !== -1) {
       datePart = datePart.substring(firstSemicolonPos + 1).trim();
     }
 
     const dead = datePart.indexOf('–') !== -1;
-
+ 
+    let born=datePart.substring(datePart.length-5,datePart.length-1);
+   
     let died = null;
 
     if (dead) {
       died = datePart.substring(datePart.lastIndexOf(' ') + 1, datePart.length - 1);
     }
 
-    return {
+    let result={
       name: pageName.replace(/_/g, ' '),
+      born,
       dead,
       died,
-      description
+      description,
+      Test:"Test"
     };
+    console.log(result)
+    return result;
   }
 };
 

@@ -19,10 +19,10 @@ const wikipediaDeadOrAliveSp = {
       throw new Error(`Wikipedia responded with status code ${response.status}!`);
     }
     
-    console.log("checkeando 2");
+  
 
     const pageSummary = await response.json();
-    console.log("checkeando 3");
+ 
 
     let extractText = pageSummary.query.pages[Object.keys(pageSummary.query.pages)[0]].extract;
     console.log(extractText);
@@ -51,6 +51,7 @@ const wikipediaDeadOrAliveSp = {
 
     const dead = datePart.indexOf('–') !== -1;
 
+    let born=datePart.substring(datePart.length-5,datePart.length-1);
     let died = null;
 
     if (dead) {
@@ -59,6 +60,7 @@ const wikipediaDeadOrAliveSp = {
 
     return {
       name: pageName.replace(/_/g, ' '),
+      born,
       dead,
       died,
       description
