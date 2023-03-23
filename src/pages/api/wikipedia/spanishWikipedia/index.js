@@ -34,7 +34,7 @@ const wikipediaDeadOrAliveSp = {
     extractText = extractText.replace(/Sr./g, 'Sr');
 
     const firstSentence = extractText.substring(0, extractText.indexOf('.') + 1);
-
+    console.log(firstSentence)
     const openBracketPos = firstSentence.indexOf('(');
     const closeBracketPos = firstSentence.lastIndexOf(')');
 

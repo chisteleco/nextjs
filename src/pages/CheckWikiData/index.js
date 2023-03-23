@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useRef} from 'react';
-
+import "../../app/tailwindWrapperCSS.css"
 export default function Home(){
 
  
@@ -47,25 +47,25 @@ export default function Home(){
  
 
    return (
-  <div>
-     <label>
+  <div className="grid h-screen place-items-center h-32 t-16">
+     <label className='font-bold'>
       Name:
       <input type="text" name="name" onChange={e=>setName(e.target.value)}/>
     </label>
-    <button onClick={e=>{handleSubmit(e)}}> OK</button>
+    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={e=>{handleSubmit(e)}}> OK</button>
 
   <>
-  <h3>nombre:{names}</h3>
-  <h3>muerto:{dead.toString()}</h3>
+  
+  <h3 className="font-bold">muerto:{dead.toString()}</h3>
   <>
      {
       dead &&
       <>
-        <h3>muerto en :{died}</h3>
+        <h3 className="text-3xl font-bold ">muerto en :{died}</h3>
         
       </>
     }
-    <h3>puntos :{points}</h3>
+    <h3 className="text-3xl font-bold ">puntos :{points}</h3>
     </>
 
   </>

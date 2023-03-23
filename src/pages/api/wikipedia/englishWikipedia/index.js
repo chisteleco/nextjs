@@ -42,7 +42,13 @@ const wikipediaDeadOrAliveEn = {
     extractText = extractText.replace(/Sr./g, 'Sr');
     
     const firstSentence = extractText.substring(0, extractText.indexOf('.') + 1);
-    
+    console.log(extractText)
+    console.log(extractText.indexOf("born"))
+    let index=extractText.indexOf("born");
+    let sub=extractText.substring(index,extractText.length-1);
+    let words=sub.split(" ");
+    let bornyear=words[3];
+    console.log(`nacio en ${bornyear}`)
     const openBracketPos = firstSentence.indexOf('(');
     const closeBracketPos = firstSentence.lastIndexOf(')');
 
