@@ -8,25 +8,28 @@ const deadOrAlive = async (name:string) => {
     try {
         console.log("checking english")
       const result = await wikipediaDeadOrAliveen.getStatus(name);
-      console.log(result)
+     // console.log(result)
       if((result.description=== 'Not found') || (typeof(result)==="undefined"))//no data retrieved, check in spanish
       {
         console.log("checking spanish")
         const result = await wikipediaDeadOrAlivesp.getStatus(name);
-        console.log(result);
+        //console.log(result);
+        return result;
       }
-      return result;
+      else
+       return result;
+     
     } catch (e) {
       // Oh no!
     }
   };
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const  {nombre} = req.query;
   console.log(`nombre a checkear: ${nombre}`);
     let name:string=nombre as string;
-    const result=deadOrAlive(name);
-
+    const result=await deadOrAlive(name);
+    console.log(`La API devuelve ${JSON.stringify(result)}`);
   res.status(200).json(result)
 }

@@ -49,6 +49,7 @@ const wikipediaDeadOrAliveSp = {
       datePart = datePart.substring(firstSemicolonPos + 1).trim();
     }
 
+   
     const dead = datePart.indexOf('–') !== -1;
 
     let born=datePart.substring(datePart.length-5,datePart.length-1);
